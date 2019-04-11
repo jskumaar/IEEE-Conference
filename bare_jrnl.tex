@@ -1,0 +1,730 @@
+%% bare_jrnl.tex
+%% V1.4b
+%% 2015/08/26
+%% by Michael Shell
+%% see http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.8b or later) with an IEEE
+%% journal paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/pkg/ieeetran
+%% and
+%% http://www.ieee.org/
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE! 
+%% User assumes all risk.
+%% In no event shall the IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%*************************************************************************
+
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. The IEEE's font choices and paper sizes can   ***
+% *** trigger bugs that do not appear when using other class files.       ***                          ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+
+\documentclass[letter,journal]{IEEEtran}
+%
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[journal]{../sty/IEEEtran}
+
+
+
+
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+% *** MISC UTILITY PACKAGES ***
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[left]{lineno}
+\usepackage{diagbox}	%for diagonal lines in tables
+\usepackage{indentfirst}
+\usepackage[normalem]{ulem}	%another package for strikeout
+%\usepackage{soul}	%for underline, strikeout
+\usepackage{multirow}	% for merging rows in a table
+\usepackage{adjustbox}	% for adjusting table to fit page; reduces font size if necessary
+\usepackage{csquotes}
+\usepackage{url}
+\usepackage{setspace}	% for adjusting line spacing within specific regions
+\usepackage{lipsum}
+\usepackage{array} %for fitting table in column
+%new table cell alignment commands
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash }m{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash }m{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash }m{#1}}
+
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/pkg/ifpdf
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+
+
+
+
+% *** CITATION PACKAGES ***
+%
+\usepackage{cite}
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of the IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off
+% such as if a citation ever needs to be enclosed in parenthesis.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 5.0 (2009-03-20) and later if using hyperref.sty.
+% The latest version can be obtained at:
+% http://www.ctan.org/pkg/cite
+% The documentation is contained in the cite.sty file itself.
+
+
+
+
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+%\usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../pdf/}{../jpeg/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  % \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation
+% can be obtained at: 
+% http://www.ctan.org/pkg/graphicx
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found at:
+% http://www.ctan.org/pkg/epslatex
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). The IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+
+
+
+
+% *** MATH PACKAGES ***
+%
+%\usepackage{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics.
+%
+% Note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/amsmath
+
+
+
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+%\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as the IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/pkg/algorithms
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/pkg/algorithmicx
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+%\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/array
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\ifCLASSOPTIONcompsoc
+%  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+%\else
+%  \usepackage[caption=false,font=footnotesize]{subfig}
+%\fi
+% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
+% for subfigure.sty, the latter of which is no longer maintained and is
+% incompatible with some LaTeX packages including fixltx2e. However,
+% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
+% which will override IEEEtran.cls' handling of captions and this will result
+% in non-IEEE style figure/table captions. To prevent this problem, be sure
+% and invoke subfig.sty's "caption=false" package option (available since
+% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
+% handling of captions.
+% Note that the Computer Society format requires a larger sans serif font
+% than the serif footnote size font used in traditional IEEE formatting
+% and thus the need to invoke different subfig.sty package options depending
+% on whether compsoc mode has been enabled.
+%
+% The latest version and documentation of subfig.sty can be obtained at:
+% http://www.ctan.org/pkg/subfig
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure.
+% Be aware that LaTeX2e kernels dated 2015 and later have fixltx2e.sty's
+% corrections already built into the system in which case a warning will
+% be issued if an attempt is made to load fixltx2e.sty as it is no longer
+% needed.
+% The latest version and documentation can be found at:
+% http://www.ctan.org/pkg/fixltx2e
+
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/stfloats
+% Do not use the stfloats baselinefloat ability as the IEEE does not allow
+% \baselineskip to stretch. Authors submitting work to the IEEE should note
+% that the IEEE rarely uses double column equations and that authors should try
+% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
+% packages (also by Sigitas Tolusis) as the IEEE does not format its papers in
+% such ways.
+% Do not attempt to use stfloats with fixltx2e as they are incompatible.
+% Instead, use Morten Hogholm'a dblfloatfix which combines the features
+% of both fixltx2e and stfloats:
+%
+% \usepackage{dblfloatfix}
+% The latest version can be found at:
+% http://www.ctan.org/pkg/dblfloatfix
+
+
+
+
+%\ifCLASSOPTIONcaptionsoff
+%  \usepackage[nomarkers]{endfloat}
+% \let\MYoriglatexcaption\caption
+% \renewcommand{\caption}[2][\relax]{\MYoriglatexcaption[#2]{#2}}
+%\fi
+% endfloat.sty was written by James Darrell McCauley, Jeff Goldberg and 
+% Axel Sommerfeldt. This package may be useful when used in conjunction with 
+% IEEEtran.cls'  captionsoff option. Some IEEE journals/societies require that
+% submissions have lists of figures/tables at the end of the paper and that
+% figures/tables without any captions are placed on a page by themselves at
+% the end of the document. If needed, the draftcls IEEEtran class option or
+% \CLASSINPUTbaselinestretch interface can be used to increase the line
+% spacing as well. Be sure and use the nomarkers option of endfloat to
+% prevent endfloat from "marking" where the figures would have been placed
+% in the text. The two hack lines of code above are a slight modification of
+% that suggested by in the endfloat docs (section 8.4.1) to ensure that
+% the full captions always appear in the list of figures/tables - even if
+% the user used the short optional argument of \caption[]{}.
+% IEEE papers do not typically make use of \caption[]'s optional argument,
+% so this should not be an issue. A similar trick can be used to disable
+% captions of packages such as subfig.sty that lack options to turn off
+% the subcaptions:
+% For subfig.sty:
+% \let\MYorigsubfloat\subfloat
+% \renewcommand{\subfloat}[2][\relax]{\MYorigsubfloat[]{#2}}
+% However, the above trick will not work if both optional arguments of
+% the \subfloat command are used. Furthermore, there needs to be a
+% description of each subfigure *somewhere* and endfloat does not add
+% subfigure captions to its list of figures. Thus, the best approach is to
+% avoid the use of subfigure captions (many IEEE journals avoid them anyway)
+% and instead reference/explain all the subfigures within the main caption.
+% The latest version of endfloat.sty and its documentation can obtained at:
+% http://www.ctan.org/pkg/endfloat
+%
+% The IEEEtran \ifCLASSOPTIONcaptionsoff conditional can also be used
+% later in the document, say, to conditionally put the References on a 
+% page by themselves.
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+%\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/url
+% Basically, \url{my_url_here}.
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+%\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+%
+% paper title
+% Titles are generally capitalized except for words such as a, an, and, as,
+% at, but, by, for, in, nor, of, on, or, the, to and up, which are usually
+% not capitalized unless they are the first or last word of the title.
+% Linebreaks \\ can be used within to get better formatting as desired.
+% Do not put math or special symbols in the title.
+\title{Pedestrian Behavior Prediction in Automated Vehicle Interactions}
+%
+%
+% author names and IEEE memberships
+% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
+% a structure at a ~ so this keeps an author's name from being broken across
+% two lines.
+% use \thanks{} to gain access to the first footnote area
+% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
+% was not built to handle multiple paragraphs
+%
+
+% \author{Suresh~Kumaar~Jayaraman,~\IEEEmembership{Student~Member,~IEEE,}
+%         Chandler~Creech,
+%         Dawn~M.~Tilbury,
+%         X. Jessie Yang,
+%         Anuj K. Pradhan,
+%         Katherine M. Tsui,
+%         and Lionel P. Robert Jr.}
+        
+
+%\author{Suresh~Kumaar~Jayaraman,
+%Chandler~Creech,
+%Dawn~M.~Tilbury,
+%X. Jessie Yang,
+%Anuj K. Pradhan,
+%Katherine M. Tsui,
+%and Lionel P. Robert Jr.}
+
+% note the % following the last \IEEEmembership and also \thanks - 
+% these prevent an unwanted space from occurring between the last author name
+% and the end of the author line. i.e., if you had this:
+% 
+% \author{....lastname \thanks{...} \thanks{...} }
+%                     ^------------^------------^----Do not want these spaces!
+%
+% a space would be appended to the last name and could cause every name on that
+% line to be shifted left slightly. This is one of those "LaTeX things". For
+% instance, "\textbf{A} \textbf{B}" will typeset as "A B" not "AB". To get
+% "AB" then you have to do: "\textbf{A}\textbf{B}"
+% \thanks is no different in this regard, so shield the last } of each \thanks
+% that ends a line with a % and do not let a space in before the next \thanks.
+% Spaces after \IEEEmembership other than the last one are OK (and needed) as
+% you are supposed to have spaces between the names. For what it is worth,
+% this is a minor point as most people would not even notice if the said evil
+% space somehow managed to creep in.
+
+
+
+% The paper headers
+%\markboth{IEEE TRANSACTIONS ON HUMAN-MACHINE SYSTEMS}{Waiting at the Crosswalk: Evaluation of Pedestrian Trust in Automated Vehicles}
+% The only time the second header will appear is for the odd numbered pages
+% after the title page when using the twoside option.
+% 
+% *** Note that you probably will NOT want to include the author's ***
+% *** name in the headers of peer review papers.                   ***
+% You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
+% you desire.
+
+
+
+
+% If you want to put a publisher's ID mark on the page you can do it like
+% this:
+%\IEEEpubid{0000--0000/00\$00.00~\copyright~2015 IEEE}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark.
+
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+
+
+
+% make the title area
+\maketitle
+
+
+% As a general rule, do not put math, special symbols or citations
+% in the abstract or keywords.
+
+
+
+
+
+% \begin{abstract}
+% \textcolor{blue}{It is important that pedestrians trust the automated vehicles for smooth interactions between them.} Much of the research into pedestrian and automated vehicle interactions has focused primarily on developing explicit communication devices (i.e. LED message boards). However, previous studies also indicate that a vehicle's driving behavior can be considered as a mode of implicit communication to convey its intent. \textcolor{blue} {A user study was conducted to test hypotheses based on uncertainty reduction theory that state trust of a pedestrian depends on the information communicated.} 30 participants interacted with oncoming automated vehicles at a mid-block crossing in virtual reality. Driving behavior and traffic signals were the sources of information. There were six conditions: 3 driving behaviors (defensive, normal and aggressive) and 2 crossings (signalized and unsignalized). We analyzed attitudinal (trust, and propensity to trust), behavioral (waiting time, jaywalking time, crossing time, and distance to collision), physiological (eye gaze) measures, and other self-reported measures (simulation sickness, and VR experience). We observed that pedestrians’ trust in automated vehicles was influenced by the vehicles’ driving behavior as well as the condition/presence of traffic control devices, and trust was particularly high during defensive driving behavior and/or with a signalized crosswalk. Trust in the automated vehicle led to some increases in trusting behavior, and we identified significant correlations between trust and certain gaze ratios. Potential applications of this research include the estimation and manipulation of pedestrians' trust in automated vehicles, expressed via pedestrians' trusting behavior and gaze pattern.
+% \end{abstract}
+
+% Note that keywords are not normally used for peer review papers.
+
+
+
+
+
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+% The very first letter is a 2 line initial drop letter followed
+% by the rest of the first word in caps.
+% 
+% form to use if the first word consists of a single letter:
+% \IEEEPARstart{A}{demo} file is ....
+% 
+% form to use if you need the single drop letter followed by
+% normal text (unknown if ever used by the IEEE):
+% \IEEEPARstart{A}{}demo file is ....
+% 
+% Some journals put the first two words in caps:
+% \IEEEPARstart{T}{his demo} file is ....
+% 
+% Here we have the typical use of a "T" for an initial drop letter
+% and "HIS" in caps to complete the first word.
+
+% \hfill mds
+ 
+% \hfill August 26, 2015
+
+
+%%New
+\section{Introduction}
+
+% 
+% Some journals put the first two words in caps:
+% \IEEEPARstart{T}{his demo} file is ....
+
+
+
+% AVs advantages and potentials.
+Automated vehicles (AVs) are garnering great attention in the research community due to their potential to make transportation more safe, accessible and comfortable \cite{litman2017autonomous}. However, widespread deployment of AVs on the public roads is required to fully realize these benefits. One major challenge for real-world AV deployment is their safe and smooth interaction with other road users, particularly pedestrians, whose behavior can change almost instantaneously. Thus, it is critical that AVs can reliably predict pedestrian behavior that aids in the AV motion planning, also called as intention-aware motion planning \cite{bandyopadhyay2013intention}. \\
+
+% Pedestrian-vehicle interactions don't give us the full picture.
+Pedestrian behavior has been studied for a while and existing research has developed prediction models for pedestrian motion and behavior. This existing research has primarily studied pedestrian behavior during their interaction with human-driven vehicles. Whether pedestrian behavior will be similar during interactions with automated vehicles is not clearly known.\\
+
+% Pedestrian interaction with AVs can be different than human-driven vehicles.
+Pedestrians typically use gaze, motion, gesture and pose while interacting with human-driven vehicles, but they predominantly engage in eye contact with the driver to communicate their intent. In the case of AVs, this eye contact with the drivers is absent \cite{rasouli2019autonomous}. Also, pedestrians could have different expectations from AV such as expecting the AV to always yield. Thus interaction dynamics between pedestrians and AVs can be significantly different to pedestrian-human driver interactions \cite{rasouli2019autonomous}. Pedestrian behavioral models has predominantly focused on -- pedestrian waiting behavior before crossing, their behavior during crossing and their gap acceptance behavior. Gap is the amount of time for consecutive vehicles to reach the crosswalk. \\
+
+These existing behavior prediction models assume pedestrian behavior in AV interactions will be similar to existing behavior in human-driver interactions. Thus there is a need to develop prediction models conditioned on pedestrian-AV interactions.
+
+%Rasouli et al. details that various parameters such as vehicle factors, traffic factors, environment factors, pedestrian traits can influence pedestrian behavior during pedestrian-vehicle interactions. Existing pedestrian behavior prediction models have predominantly used some of these parameters as inputs for behavior and trajectory prediction. 
+
+
+
+%However, pedestrian behavior is usually a response to the vehicle's behavior and thus the vehicle parameters significantly influence pedestrian behavior and help in the behavior prediction. However, these parameters might not give us the full picture in the case of pedestrian-AV interactions. \\
+
+
+
+
+%AVs must be able to accurately predict pedestrian behavior and thus trajectory for planning their own actions, otherwise known as intention-aware motion planning (ref)
+
+
+
+% some stats about unsignalized crosswalk crashes, etc
+
+
+
+% paper focus and contributions
+This research focuses on two aspects of the problem: analyzing pedestrian behavior during AV interactions and developing a pedestrian motion prediction model. First, we analyze pedestrians' waiting, crossing and gap acceptance behaviors during AV interactions to compare their behavior during human-driver interactions. Second, we propose a hybrid modelling framework to predict pedestrian motion during crossing. The hybrid model consists of discrete pedestrian action states -- approach, wait, cross, and walk away. Each discrete state employs a constant velocity dynamics for the continuous state (position, speed, and heading) prediction. The wait and cross discrete state transitions are predicted using logistic regression classifiers while the other transitions are predicted using scenario-specific guard conditions. \\
+
+We present experimental results of our proposed modelling approach on a virtual reality data set containing pedestrian-AV interactions that was experimentally collected through a user study. We compare our model predictions with the predictions of a baseline constant velocity motion model to verify the accuracy of our model. We further compare the prediction accuracies at different prediction horizons to verify the extended prediction range provided by our approach.\\
+
+The rest of the paper is organized as follows. Section II details the existing work in pedestrian motion and behavior prediction and pedestrian-AV interactions. Section III explains our data collection and hybrid modelling methodology. Section IV compares the observed pedestrian behavior with real-life behavior and compares the prediction accuracies of our hybrid model with the constant velocity baseline model. Section VI discusses the implications of the study followed by conclusion and future work in Section VII.
+
+
+
+
+% Paper Organization
+% 1 - Background and Related Work; Related pedestrian behavior, VR pedestrian behavior, pedestrian behavior and trajectory predictions.
+
+% 2 - Methodology, User Study, Data Collection (Refer Sadigh, Katherine Paper); Focus more on the uniqueness of the data set.
+
+% 3 - Behavior comparison with real world pedestrian behavior, VR pedestrian behavior
+
+% 4 - Hybrid framework Modelling approach (may be discuss this in the methodology?)
+
+% - rational pedestrian
+% - pedestrian with intention to cross
+
+% 5 - Logistic Regression Models?
+% 6 - Prediction results and comparison with constant velocity predictions
+% 7- Discussion
+
+
+\section{Background and Related Work}
+
+\subsection{Pedestrian motion prediction}
+Existing models for pedestrian motion prediction can be broadly categorized into three -- 1) physics-based models, 2) planning-based models, and 3) trajectory-based models. \\
+
+Physics-based models are the simplest and are most commonly used for pedestrian motion prediction. They assume a particular dynamics for predicting future pedestrian motion \cite{lefevre2014survey} such as constant velocity, constant acceleration, or constant turn rate or a mixture of these dynamics as in \cite{keller2011will} and use Kalman or sampling-based filtering for estimation. These models, though being simple and fast for real-time applications, cannot reliably predict over 1 s in road crossing scenarios due to their inability to predict pedestrian motion changes such as turning at the crosswalk. \\
+
+The more sophisticated planning-based models pose the pedestrian motion prediction as a planning problem by using a Markovian framework (such as a Markov Decision Process) learnt from the observed data \cite{karasev2016intent,kitani2012activity}. These models, by attributing goal-seeking behavior to pedestrians, are able to predict for longer time duration than Physics-based models. For example, \cite{karasev2016intent} modelled the planning problem as a jump-Markov process to include the changing goal locations of the pedestrians while crossing the road. However, in general, these models do not consider the waiting behavior of pedestrians at the crosswalks.\\
+
+More recently, trajectory-based models are being developed. These models use the trajectory history of pedestrians to predict their future trajectories. These methods do not assume any pedestrian dynamics, but instead learn the dynamics from the observed data. A common approach is to cluster the trajectories from the observed data and learn the motion patterns. Common approaches for learning the motion patterns include Gaussian Process \cite{ellis2009modelling,jaipuria2018learning}, vector fields \cite{coscia2018long,jacobs2017real}, and deep learning \cite{alahi2016social} techniques. However, these models too are limited in their application to crosswalk scenarios, as they also do not consider the waiting behavior of pedestrians.\\
+
+The above mentioned approaches are useful for predicting pedestrian motion in unstructured environments. However, in structured environments such as the road crossings, it is critical to identify the pedestrian decisions of waiting and crossing to more accurately predict their motion. 
+
+
+
+\subsection{Pedestrian crosswalk behavior prediction}
+
+The pedestrian waiting (walking pedestrian to wait or not) and crossing decisions (walking and waiting pedestrians to cross or not) are predicted by considering them as classification problems. A common approach includes modelling their behavior as a gap acceptance problem to identify which vehicular gap the pedestrians feel comfortable crossing. Vehicular gap is defined as the time interval for successive vehicle to reach the crosswalk. For example, \cite{yannis2013pedestrian} adopted a logistic regression model to identify the crossing decision based on pedestrian waiting time, vehicle distance, age and gender of pedestrians. Other factors that can predict pedestrian gap acceptance behavior include pedestrian walking speed, crosswalk length, vehicle speed and traffic density \cite{papadimitriou2009critical}. Additionally, Markovian and Neural Network models have also been developed to predict the crossing decision of pedestrians \cite{koehler2013stationary,quintero2017pedestrian} from their motion. However, these models require large data sets for training. \\
+
+All the above discussed pedestrian crossing behavior and motion prediction models have been developed for pedestrian-human driver interaction scenarios. Currently, the major assumption is that pedestrian behavior would be similar during AV interactions as they are for human driver interactions. However, it is not yet clearly understood if pedestrian behavior would be similar during both scenarios.
+
+
+
+%Gap acceptance behavior:\\
+%A gap is defined as the amount of time from when a vehicle passes the waiting pedestrian till the next vehicle passes the pedestrian. Gap acceptance of pedestrians in unsignalized crosswalks has been studied before. (ref) found that gap acceptance depended mostly on the  of pedestrians, whereas (ref) state that it depends on waiting time, age, gender, vehicle speed, distance.
+
+%\subsection{Pedestrian VR behavior}
+
+%Pedestrian crosswalk behavior has predominantly focused on -- their waiting behavior before crossing, their behavior during crossing and their gap acceptance behavior. Gap is the amount of time for consecutive vehicles to reach the crosswalk (\textit{get a proper definition from lit.}). (ref) found that pedestrian waiting times follow a Poisson distribution and \textit{add factors} have been identified as significant factors predicting the waiting times. Crossing speed of pedestrians is usually greater than their normal walking speeds (ref). Relation between crossing and waiting times suggest that pedestrians who wait more cross faster? \\
+
+
+
+\subsection{Pedestrian-AV interactions}
+
+Pedestrian interaction with automated vehicles in the real world is limited as fully automated vehicles without safety drivers are not available yet. Thus researchers have started looking into other options such as using virtual reality \cite{jayaraman2018trust} or Wizard of Oz techniques \cite{rothenbucher2016ghost,habibovic2018communicating} for studying pedestrian behavior during AV interactions. \\
+
+Existing studies have compared pedestrian perception and behavioral differences between AVs and human-driven vehicles. For example, \cite{habibovic2018communicating} used a Wizard of Oz AV and found that pedestrians were less comfortable crossing in front of the AV than a human-driven vehicle. Rothenbucher et al. \cite{rothenbucher2016ghost} also used a Wizard of Oz AV and explored the reactions of pedestrians when interacting with the AV. They found that people generally crossed the street normally and tolerant of even an aggressive behavior by the AV. Similarly, \cite{palmeiro2018interaction} used a Wizard of Oz AV to explore pedestrian intention to cross. However, they found that pedestrian gap acceptance behavior was similar for both AV and human-driver conditions. \\
+
+Thus, there is no consensus on the pedestrian behavioral differences between AV and human-driver interaction scenarios, which warrants further investigation. Moreover, these studies explore pedestrian intention to cross, but do not objectively develop prediction models to quantify their crossing behavior that can be utilized for AV motion planning. \\
+
+% if have a single appendix:
+%\appendix[Proof of the Zonklar Equations]
+% or
+%\appendix  % for no appendix heading
+% do not use \section anymore after \appendix, only \section*
+% is possibly needed
+
+% use appendices with more than one appendix
+% then use \section to start each appendix
+% you must declare a \section before using any
+% \subsection or using \label (\appendices by itself
+% starts a section numbered zero.)
+%
+
+
+% \appendices
+% \section{Proof of the First Zonklar Equation}
+% Appendix one text goes here.
+
+% % you can choose not to have a title for an appendix
+% % if you want by leaving the argument blank
+% \section{}
+% Appendix two text goes here.
+
+
+
+
+% Can use something like this to put references on a page
+% by themselves when using endfloat and the captionsoff option.
+\ifCLASSOPTIONcaptionsoff
+  \newpage
+\fi
+
+
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://mirror.ctan.org/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+
+
+\bibliography{bibtex/bib/IEEEabrv.bib,bibtex/bib/IEEEexample.bib}
+\bibliographystyle{IEEEtran}
+
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+% \begin{thebibliography}{1}
+
+% \bibitem{IEEEhowto:kopka}
+% H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
+%   0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+
+% \end{thebibliography}
+
+% biography section
+% 
+% If you have an EPS/PDF photo (graphicx package needed) extra braces are
+% needed around the contents of the optional argument to biography to prevent
+% the LaTeX parser from getting confused when it sees the complicated
+% \includegraphics command within an optional argument. (You could create
+% your own custom macro containing the \includegraphics command to make things
+% simpler here.)
+%\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{mshell}}]{Michael Shell}
+% or if you just want to reserve a space for a photo:
+
+% \begin{IEEEbiography}{Michael Shell}
+% Biography text here.
+% \end{IEEEbiography}
+
+% % if you will not have a photo at all:
+% \begin{IEEEbiographynophoto}{John Doe}
+% Biography text here.
+% \end{IEEEbiographynophoto}
+
+% % insert where needed to balance the two columns on the last page with
+% % biographies
+% %\newpage
+
+% \begin{IEEEbiographynophoto}{Jane Doe}
+% Biography text here.
+% \end{IEEEbiographynophoto}
+
+% You can push biographies down or up by placing
+% a \vfill before or after them. The appropriate
+% use of \vfill depends on what kind of text is
+% on the last page and whether or not the columns
+% are being equalized.
+
+%\vfill
+
+% Can be used to pull up biographies so that the bottom of the last one
+% is flush with the other column.
+%\enlargethispage{-5in}
+
+
+
+% that's all folks
+\end{document}
+
+
